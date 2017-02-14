@@ -31,15 +31,16 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/regFirstname"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="24dp"
-        android:layout_marginStart="24dp"
+        android:hint="Firstname"
+        android:layout_marginTop="72dp"
+        app:layout_constraintTop_toBottomOf="@+id/upimageView"
+        android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:hint="Firstname" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        app:layout_constraintHorizontal_bias="0.56" />
 
     <EditText
         android:layout_width="0dp"
@@ -47,15 +48,15 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/regUsername"
-        android:layout_marginStart="24dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="24dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="24dp"
+        android:hint="Username"
+        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/regEmail"
-        android:hint="Username" />
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" />
 
     <EditText
         android:layout_width="0dp"
@@ -63,18 +64,18 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/regAddress"
-        android:layout_marginStart="24dp"
+        android:hint="Address"
+        android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/regLastname"
-        android:hint="Address" />
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/regLastname" />
 
     <Button
-        android:text="Register"
+        android:text="Next"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/btnReg"
@@ -89,7 +90,7 @@
         app:layout_constraintHorizontal_bias="0.56"
         android:background="@drawable/custom_button"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/ivimageView" />
+        app:layout_constraintTop_toBottomOf="@+id/regConfirmpassword" />
 
     <EditText
         android:layout_width="0dp"
@@ -98,14 +99,14 @@
         android:ems="10"
         android:id="@+id/regPassword"
         android:hint="Password"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/regUsername"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/regUsername"
+        android:layout_marginEnd="16dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="24dp" />
+        android:layout_marginRight="16dp" />
 
     <EditText
         android:layout_width="0dp"
@@ -113,15 +114,15 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/regLastname"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/regFirstname"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="24dp"
-        android:layout_marginStart="24dp"
+        android:hint="Lastname"
+        android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="24dp"
-        android:hint="Lastname" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/regFirstname"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" />
 
     <EditText
         android:layout_width="0dp"
@@ -129,16 +130,15 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/regEmail"
-        android:layout_marginStart="24dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="24dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="24dp"
-        app:layout_constraintHorizontal_bias="0.21"
-        android:layout_marginTop="24dp"
+        android:hint="Email"
+        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/regPostcode"
-        android:hint="Email" />
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp" />
 
     <EditText
         android:layout_width="0dp"
@@ -146,22 +146,23 @@
         android:inputType="textPostalAddress"
         android:ems="10"
         android:id="@+id/regPostcode"
-        android:layout_marginStart="24dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="24dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="24dp"
-        app:layout_constraintHorizontal_bias="0.66"
-        android:layout_marginTop="24dp"
+        android:hint="Postal Code"
+        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/regAddress"
-        android:hint="Postal Code" />
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp" />
+
+
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/s4ulogo"
-        android:id="@+id/imageView"
+        android:id="@+id/upimageView"
         android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="16dp"
@@ -172,65 +173,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:layout_width="752dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/regConfirmpassword"
         android:hint="Confirm Password"
-        tools:layout_editor_absoluteX="24dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/regPassword" />
-
-    <ImageView
-        android:layout_width="81dp"
-        android:layout_height="82dp"
-        app:srcCompat="@android:drawable/ic_menu_camera"
-        android:id="@+id/ivCamera"
+        app:layout_constraintTop_toBottomOf="@+id/regPassword"
         android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/regConfirmpassword" />
-
-    <ImageView
-        android:layout_width="81dp"
-        android:layout_height="82dp"
-        app:srcCompat="@android:drawable/ic_menu_gallery"
-        android:id="@+id/ivGallery"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/regConfirmpassword"
-        android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/ivCamera"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintRight_toLeftOf="@+id/ivUpload"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp" />
-
-    <ImageView
-        android:layout_width="81dp"
-        android:layout_height="81dp"
-        app:srcCompat="@android:drawable/ic_menu_upload"
-        android:id="@+id/ivUpload"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/regConfirmpassword" />
-
-    <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        android:id="@+id/ivimageView"
-        android:layout_marginStart="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="96dp"
-        app:layout_constraintTop_toBottomOf="@+id/ivGallery" />
+        android:layout_marginLeft="16dp" />
 
 </android.support.constraint.ConstraintLayout>
 </ScrollView>

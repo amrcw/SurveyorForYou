@@ -55,6 +55,12 @@ public class LoginActivity extends AppCompatActivity {
                 final String username = lgname.getText().toString();
                 final String password = lgpass.getText().toString();
 
+                Log.d("username",username);
+                Log.d("pass",password);
+
+               // Intent intent = new Intent(LoginActivity.this,UserProfilePageActiviy.class);
+               // LoginActivity.this.startActivity(intent);
+
                 Response.Listener<String> responseListner = new Response.Listener<String>(){
                     @Override
                     public void onResponse(String response) {
@@ -64,18 +70,23 @@ public class LoginActivity extends AppCompatActivity {
 
                             if(success){
 
+                              //  Intent intent = new Intent(LoginActivity.this,UserProfilePageActiviy.class);
+                              //  LoginActivity.this.startActivity(intent);
+
                                 String firstname = jsonResponse.getString("firstname");
                                 String lastname = jsonResponse.getString("lastname");
                                 String email = jsonResponse.getString("email");
                                 String address = jsonResponse.getString("address");
                                 String postcode = jsonResponse.getString("postcode");
+                                String photoId = jsonResponse.getString("photo_id");
 
-                                Intent intent = new Intent(LoginActivity.this,UserProfileAcivity.class);
+                                Intent intent = new Intent(LoginActivity.this,UserDashboard.class);
                                 intent.putExtra("firstname",firstname);
-                                intent.putExtra("lasttname",lastname);
+                                intent.putExtra("lastname",lastname);
                                 intent.putExtra("email",email);
                                 intent.putExtra("address",address);
                                 intent.putExtra("postcode",postcode);
+                                intent.putExtra("photo_id",photoId);
 
                                 LoginActivity.this.startActivity(intent);
                             }else{
@@ -102,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                 LoginRequest lgRequest = new LoginRequest(username,password,responseListner);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(lgRequest);
+
             }
 
 

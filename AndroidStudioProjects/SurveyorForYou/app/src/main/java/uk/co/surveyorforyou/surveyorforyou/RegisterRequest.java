@@ -22,10 +22,11 @@ public class RegisterRequest extends StringRequest {
         params.put("firstname", firstname);
         params.put("lastname", lastname);
         params.put("email", email);
-        params.put("username",username);
-        params.put("password",password);
         params.put("address",address);
         params.put("postcode",postcode);
+        params.put("username",username);
+        params.put("password",password);
+
     }
 
     @Override
