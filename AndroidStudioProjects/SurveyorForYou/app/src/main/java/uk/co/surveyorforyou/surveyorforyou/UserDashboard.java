@@ -2,7 +2,7 @@ package uk.co.surveyorforyou.surveyorforyou;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
+
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ public class UserDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
-        setTitle("User Account");
+        setTitle("User Dashboard");
 
         mToolbar = (Toolbar)findViewById(R.id.nav_action_toolbar);
         setSupportActionBar(mToolbar);
@@ -39,7 +39,13 @@ public class UserDashboard extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        //final ImageView userImage = (ImageView)findViewById(R.id.userImage);
+        final ImageView userProf = (ImageView)findViewById(R.id.imgProfile);
+        final TextView dashName = (TextView)findViewById(R.id.dashName);
+        final TextView dashEmail = (TextView)findViewById(R.id.dashEmail);
+        final TextView dashAdd = (TextView)findViewById(R.id.dashAdd);
+        final TextView dashPostcode = (TextView)findViewById(R.id.dashPostcode);
+        final TextView dashContact = (TextView)findViewById(R.id.dashContact);
+
 
 
         String firstname = getIntent().getStringExtra("firstname");
@@ -58,8 +64,12 @@ public class UserDashboard extends AppCompatActivity {
         navigationView.addHeaderView(nav_header);
 
 
-       // Glide.with(UserDashboard.this).load(photo_path).into(userImage);
-        //userEmail.setText(email);
+
+        Glide.with(UserDashboard.this).load(photo_path).into(userProf);
+        dashName.setText(firstname+ " " +lastname);
+        dashAdd.setText(address);
+        dashPostcode.setText(postcode);
+        dashEmail.setText(email);
 
 
 

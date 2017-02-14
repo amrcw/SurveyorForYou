@@ -41,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText rgEmail = (EditText)findViewById(R.id.regEmail);
         final EditText rgUser = (EditText)findViewById(R.id.regUsername);
         final EditText rgPass = (EditText)findViewById(R.id.regPassword);
+        final EditText rgContact = (EditText)findViewById(R.id.regContact);
         final EditText rgConfirmpass = (EditText)findViewById(R.id.regConfirmpassword);
         final EditText rgAddress = (EditText)findViewById(R.id.regAddress);
         final EditText rgPostcode = (EditText)findViewById(R.id.regPostcode);
@@ -57,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final  String firstname = rgFname.getText().toString();
                 final  String lastname = rgLname.getText().toString();
                 final  String email = rgEmail.getText().toString();
+                final  String contact = rgContact.getText().toString();
                 final  String username = rgUser.getText().toString();
                 final  String password = rgPass.getText().toString();
                 final  String address = rgAddress.getText().toString();
@@ -67,6 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
                 i.putExtra("firstname",firstname);
                 i.putExtra("lastname",lastname);
                 i.putExtra("email",email);
+                i.putExtra("contact",contact);
                 i.putExtra("username",username);
                 i.putExtra("password",password);
                 i.putExtra("address",address);

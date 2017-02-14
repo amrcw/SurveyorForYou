@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String firstname = jsonResponse.getString("firstname");
                                 String lastname = jsonResponse.getString("lastname");
                                 String email = jsonResponse.getString("email");
+                                String contact= jsonResponse.getString("contact_number");
                                 String address = jsonResponse.getString("address");
                                 String postcode = jsonResponse.getString("postcode");
                                 String photoId = jsonResponse.getString("photo_id");
@@ -84,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.putExtra("firstname",firstname);
                                 intent.putExtra("lastname",lastname);
                                 intent.putExtra("email",email);
+                                intent.putExtra("contact",contact);
                                 intent.putExtra("address",address);
                                 intent.putExtra("postcode",postcode);
                                 intent.putExtra("photo_id",photoId);

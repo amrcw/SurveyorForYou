@@ -58,6 +58,7 @@ public class UploadImage extends AppCompatActivity {
         final  String firstname = i.getStringExtra("firstname");
         final  String lastname = i.getStringExtra("lastname");
         final  String email = i.getStringExtra("email");
+        final  String contact = i.getStringExtra("contact");
         final  String username = i.getStringExtra("username");
         final  String password = i.getStringExtra("password");
         final  String address = i.getStringExtra("address");
@@ -99,6 +100,7 @@ public class UploadImage extends AppCompatActivity {
                     postData.put("firstname",firstname);
                     postData.put("lastname",lastname);
                     postData.put("email",email);
+                    postData.put("contact",contact);
                     postData.put("username",username);
                     postData.put("password",password);
                     postData.put("address",address);

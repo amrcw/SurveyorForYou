@@ -8,9 +8,14 @@
             android:title="Dashboard" />
 
         <item
+            android:id="@+id/nav_properties"
+            android:icon="@mipmap/ic_playlist_add_check_black_24dp"
+            android:title="Properties" />
+
+        <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Access Camera" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
