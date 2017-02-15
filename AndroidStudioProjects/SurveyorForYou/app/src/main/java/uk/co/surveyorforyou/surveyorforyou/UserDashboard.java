@@ -1,6 +1,12 @@
 package uk.co.surveyorforyou.surveyorforyou;
 
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -8,14 +14,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-public class UserDashboard extends AppCompatActivity {
+public class UserDashboard extends AppCompatActivity{
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
@@ -39,21 +48,14 @@ public class UserDashboard extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        final ImageView userProf = (ImageView)findViewById(R.id.imgProfile);
-        final TextView dashName = (TextView)findViewById(R.id.dashName);
-        final TextView dashEmail = (TextView)findViewById(R.id.dashEmail);
-        final TextView dashAdd = (TextView)findViewById(R.id.dashAdd);
-        final TextView dashPostcode = (TextView)findViewById(R.id.dashPostcode);
-        final TextView dashContact = (TextView)findViewById(R.id.dashContact);
-
-
-
         String firstname = getIntent().getStringExtra("firstname");
         String lastname = getIntent().getStringExtra("lastname");
         String email = getIntent().getStringExtra("email");
         String address = getIntent().getStringExtra("address");
         String postcode = getIntent().getStringExtra("postcode");
         String photo_path = getIntent().getStringExtra("photo_id");
+
+
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.dash_nav_view);
@@ -63,25 +65,102 @@ public class UserDashboard extends AppCompatActivity {
         Glide.with(UserDashboard.this).load(photo_path).into(userPic);
         navigationView.addHeaderView(nav_header);
 
+        setupDrawerContent(navigationView);
 
-
-        Glide.with(UserDashboard.this).load(photo_path).into(userProf);
-        dashName.setText(firstname+ " " +lastname);
-        dashAdd.setText(address);
-        dashPostcode.setText(postcode);
-        dashEmail.setText(email);
+        //Glide.with(UserDashboard.this).load(photo_path).into(userProf);
+        //dashName.setText(firstname+ " " +lastname);
+        //dashAdd.setText(address);
+        //dashPostcode.setText(postcode);
+        //dashEmail.setText(email);
 
 
 
     }
 
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        selectDrawerItem(menuItem);
+                        return true;
+                    }
+                });
+    }
+
+
+    public void selectDrawerItem(MenuItem menuItem) {
+        // Create a new fragment and specify the fragment to show based on nav item clicked
+        Fragment fragment = null;
+        Class fragmentClass = null;
+        switch(menuItem.getItemId()) {
+            case R.id.nav_camera:
+                fragmentClass = CameraFragment.class;
+                break;
+            case R.id.nav_properties:
+                fragmentClass = PropertiesFragment.class;
+                break;
+            case R.id.nav_dashboad:
+                fragmentClass = DashboardFragment.class;
+                break;
+
+
+        }
+
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+
+            String firstname = getIntent().getStringExtra("firstname");
+            String lastname = getIntent().getStringExtra("lastname");
+            String email = getIntent().getStringExtra("email");
+            String address = getIntent().getStringExtra("address");
+            String postcode = getIntent().getStringExtra("postcode");
+            String photo_path = getIntent().getStringExtra("photo_id");
+
+            Bundle bundle = new Bundle();
+            bundle.putString("firstname", firstname);
+            bundle.putString("lastname", lastname);
+            bundle.putString("email", email);
+            bundle.putString("address", address);
+            bundle.putString("postcode", postcode);
+            bundle.putString("photo_path", photo_path);
+            // set Fragmentclass Arguments
+            //DashboardFragment fragobj = new DashboardFragment();
+            fragment.setArguments(bundle);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Insert the fragment by replacing any existing fragment
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.dash_main, fragment).commit();
+
+        // Highlight the selected item has been done by NavigationView
+        menuItem.setChecked(true);
+        // Set action bar title
+        setTitle(menuItem.getTitle());
+        // Close the navigation drawer
+        mDrawerLayout.closeDrawers();
+    }
+
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        if(mToggle.onOptionsItemSelected(item)){
-            return true;
+        // The action bar home/up action should open or close the drawer.
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
+
+
+
 }

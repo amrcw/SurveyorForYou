@@ -1,0 +1,226 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="uk.co.surveyorforyou.surveyorforyou.CameraFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/dash_drawer_layout"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="273dp"
+            android:textAlignment="center"
+
+            android:id="@+id/imgProfile"
+
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_below="@+id/include"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="49dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50dp">
+
+            <TextView
+                android:text="Name :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="56dp"
+                tools:layout_editor_absoluteX="54dp"
+                android:textSize="20sp"
+
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dashName"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:layout_marginLeft="120dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginLeft="50dp">
+
+            <TextView
+                android:text="Email :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="56dp"
+                tools:layout_editor_absoluteX="54dp"
+                android:textSize="20sp"
+
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dashEmail"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:layout_marginLeft="125dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginLeft="50dp">
+
+            <TextView
+                android:text="Contact Number :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="56dp"
+                tools:layout_editor_absoluteX="54dp"
+                android:textSize="20sp"
+
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dashContact"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:layout_marginLeft="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginLeft="50dp">
+
+            <TextView
+                android:text="Address :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="56dp"
+                tools:layout_editor_absoluteX="54dp"
+                android:textSize="20sp"
+
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dashAdd"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:layout_marginLeft="100dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginLeft="50dp">
+
+            <TextView
+                android:text="Postcode :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="56dp"
+                tools:layout_editor_absoluteX="54dp"
+                android:textSize="20sp"
+
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dashPostcode"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:layout_marginLeft="90dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginLeft="50dp">
+
+            <TextView
+                android:text="RICS Number :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="56dp"
+                tools:layout_editor_absoluteX="54dp"
+                android:textSize="20sp"
+
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dashRICS"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:layout_marginLeft="90dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginLeft="50dp">
+
+            <TextView
+                android:text="Areas :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="56dp"
+                tools:layout_editor_absoluteX="54dp"
+                android:textSize="20sp"
+
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dashAreas"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:layout_marginLeft="90dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginLeft="50dp">
+
+            <TextView
+                android:text="Qualification :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteY="56dp"
+                tools:layout_editor_absoluteX="54dp"
+                android:textSize="20sp"
+
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dashQualification"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:layout_marginLeft="90dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
