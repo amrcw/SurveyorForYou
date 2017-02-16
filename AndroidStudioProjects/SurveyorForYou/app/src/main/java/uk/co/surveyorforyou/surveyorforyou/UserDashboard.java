@@ -18,7 +18,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,15 +32,38 @@ public class UserDashboard extends AppCompatActivity{
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private Toolbar mToolbar;
+    private Spinner mSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
-        setTitle("User Dashboard");
+
+
+
+        mSpinner = (Spinner)findViewById(R.id.spinner);
+        ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(UserDashboard.this,R.layout.custom_spinner_item,getResources().getStringArray(R.array.properties));
+        mAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        mSpinner.setAdapter(mAdapter);
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                //Toast.makeText(UserDashboard.this,mSpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+                PropertiesTask propertiesTask = new PropertiesTask(UserDashboard.this);
+                propertiesTask.execute();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         mToolbar = (Toolbar)findViewById(R.id.nav_action_toolbar);
+        //getSupportActionBar().setDisplayShowTitleEnabled(true);
+        setTitle("Dashboard");
         setSupportActionBar(mToolbar);
+
 
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.nav_drawer_open,R.string.nav_drawer_close);
@@ -156,11 +182,6 @@ public class UserDashboard extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-
 
 
 }

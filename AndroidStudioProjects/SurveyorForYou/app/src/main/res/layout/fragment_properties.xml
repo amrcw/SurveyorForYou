@@ -5,9 +5,50 @@
     tools:context="uk.co.surveyorforyou.surveyorforyou.PropertiesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:hint="Ref No"
+            android:layout_weight="0.28" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:hint="Name"
+            android:layout_weight="0.17" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:hint="Phone"
+            android:layout_weight="0.28" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:hint="Postcode"
+            android:layout_weight="0.18" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:hint="Date Oedered"
+            android:layout_weight="0.15" />
+
+        <TextView
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:hint="Date Due"
+            />
+
+
+    </LinearLayout>
 
 </FrameLayout>
