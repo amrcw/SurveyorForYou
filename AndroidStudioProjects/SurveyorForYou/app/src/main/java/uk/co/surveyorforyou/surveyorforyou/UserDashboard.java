@@ -1,6 +1,7 @@
 package uk.co.surveyorforyou.surveyorforyou;
 
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -21,11 +22,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class UserDashboard extends AppCompatActivity{
 
@@ -33,11 +47,26 @@ public class UserDashboard extends AppCompatActivity{
     private ActionBarDrawerToggle mToggle;
     private Toolbar mToolbar;
     private Spinner mSpinner;
+    private Fragment fragment = null;
+    private Class fragmentClass = null;
+    String JSON_STRING;
+    String json_string;
+
+    JSONObject jsonObject;
+    JSONArray jsonArray;
+    PropertiesAdapter propertiesAdapter;
+    ListView listView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
+        //mSpinner.setVisibility(View.INVISIBLE);
+        new BackgroundTask().execute();
+
+        //PropertiesTask propertiesTask = new PropertiesTask(UserDashboard.this);
+        //propertiesTask.execute();
 
 
 
@@ -48,9 +77,8 @@ public class UserDashboard extends AppCompatActivity{
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //Toast.makeText(UserDashboard.this,mSpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
-                PropertiesTask propertiesTask = new PropertiesTask(UserDashboard.this);
-                propertiesTask.execute();
+                Toast.makeText(UserDashboard.this,mSpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -84,6 +112,7 @@ public class UserDashboard extends AppCompatActivity{
 
 
 
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.dash_nav_view);
         View nav_header = LayoutInflater.from(this).inflate(R.layout.dash_nav_header, null);
         ((TextView) nav_header.findViewById(R.id.userEmail)).setText(email);
@@ -103,6 +132,9 @@ public class UserDashboard extends AppCompatActivity{
 
     }
 
+
+
+
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -117,17 +149,22 @@ public class UserDashboard extends AppCompatActivity{
 
     public void selectDrawerItem(MenuItem menuItem) {
         // Create a new fragment and specify the fragment to show based on nav item clicked
-        Fragment fragment = null;
-        Class fragmentClass = null;
+
         switch(menuItem.getItemId()) {
             case R.id.nav_camera:
                 fragmentClass = CameraFragment.class;
+                mSpinner.setVisibility(View.INVISIBLE);
                 break;
             case R.id.nav_properties:
                 fragmentClass = PropertiesFragment.class;
+                mSpinner.setVisibility(View.VISIBLE);
+
+
+
                 break;
             case R.id.nav_dashboad:
                 fragmentClass = DashboardFragment.class;
+                mSpinner.setVisibility(View.INVISIBLE);
                 break;
 
 
@@ -143,6 +180,8 @@ public class UserDashboard extends AppCompatActivity{
             String postcode = getIntent().getStringExtra("postcode");
             String photo_path = getIntent().getStringExtra("photo_id");
 
+
+
             Bundle bundle = new Bundle();
             bundle.putString("firstname", firstname);
             bundle.putString("lastname", lastname);
@@ -150,9 +189,17 @@ public class UserDashboard extends AppCompatActivity{
             bundle.putString("address", address);
             bundle.putString("postcode", postcode);
             bundle.putString("photo_path", photo_path);
+            if(json_string == null){
+                Toast.makeText(getApplicationContext(),"First get JSON",Toast.LENGTH_SHORT).show();
+            }else {
+                bundle.putString("json data", json_string);
+
+            }
             // set Fragmentclass Arguments
             //DashboardFragment fragobj = new DashboardFragment();
             fragment.setArguments(bundle);
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -184,4 +231,74 @@ public class UserDashboard extends AppCompatActivity{
     }
 
 
+
+    public class BackgroundTask extends AsyncTask<Void,Void,String> {
+
+
+
+        String json_file;
+
+        @Override
+        protected void onPreExecute() {
+            json_file = "http://www.surveyor-for-you.co.uk/Android/getProperties.php";
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            try {
+                URL url = new URL(json_file);
+                HttpURLConnection httpurlcon = (HttpURLConnection) url.openConnection();
+                InputStream streaminput = httpurlcon.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(streaminput));
+                StringBuilder stringBuilder = new StringBuilder();
+                //String line;
+
+                while ((JSON_STRING = bufferedReader.readLine()) != null){
+
+                    stringBuilder.append(JSON_STRING+"\n");
+                    //Thread.sleep(500);
+                }
+
+
+                bufferedReader.close();
+                streaminput.close();
+                httpurlcon.disconnect();
+
+                return stringBuilder.toString().trim();
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            //TextView txTextView = (TextView)findViewById(R.id.jsontext);
+           // txTextView.setText(s);
+            json_string = s;
+        }
+
+        public void parseJSON(View view){
+
+            if(json_string == null){
+                Toast.makeText(getApplicationContext(),"First get JSON",Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
+    }
+
+
 }
+
+
