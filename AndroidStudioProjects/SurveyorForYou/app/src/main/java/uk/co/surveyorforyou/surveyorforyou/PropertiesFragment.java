@@ -47,7 +47,7 @@ public class PropertiesFragment extends Fragment {
         View rootView =  inflater.inflate(R.layout.fragment_properties, container, false);
 
         propertiesAdapter= new PropertiesAdapter(PropertiesFragment.this,R.layout.properties_list_layout);
-        listView = (ListView)getView().findViewById(R.id.listview);
+        listView = (ListView) rootView.findViewById(R.id.listview);
         listView.setAdapter(propertiesAdapter);
 
         String json_string = getArguments().getString("json data");

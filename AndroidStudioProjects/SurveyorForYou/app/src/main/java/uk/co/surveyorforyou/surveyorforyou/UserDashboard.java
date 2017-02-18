@@ -22,16 +22,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -52,10 +47,7 @@ public class UserDashboard extends AppCompatActivity{
     String JSON_STRING;
     String json_string;
 
-    JSONObject jsonObject;
-    JSONArray jsonArray;
-    PropertiesAdapter propertiesAdapter;
-    ListView listView;
+
 
 
     @Override
@@ -158,9 +150,6 @@ public class UserDashboard extends AppCompatActivity{
             case R.id.nav_properties:
                 fragmentClass = PropertiesFragment.class;
                 mSpinner.setVisibility(View.VISIBLE);
-
-
-
                 break;
             case R.id.nav_dashboad:
                 fragmentClass = DashboardFragment.class;
@@ -193,13 +182,10 @@ public class UserDashboard extends AppCompatActivity{
                 Toast.makeText(getApplicationContext(),"First get JSON",Toast.LENGTH_SHORT).show();
             }else {
                 bundle.putString("json data", json_string);
-
             }
             // set Fragmentclass Arguments
             //DashboardFragment fragobj = new DashboardFragment();
             fragment.setArguments(bundle);
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -283,7 +269,7 @@ public class UserDashboard extends AppCompatActivity{
         @Override
         protected void onPostExecute(String s) {
             //TextView txTextView = (TextView)findViewById(R.id.jsontext);
-           // txTextView.setText(s);
+            //txTextView.setText(s);
             json_string = s;
         }
 
