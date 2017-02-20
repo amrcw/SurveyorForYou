@@ -1,98 +1,45 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="uk.co.surveyorforyou.surveyorforyou.PropertiesFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/refNo"
-            android:hint="Ref No"
-            android:layout_weight="0.10"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_alignParentLeft="true"
-            android:gravity="center"
-            android:textAppearance="?android:textAppearanceLarge"/>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/clientName"
-            android:hint="Name"
-            android:layout_weight="0.17"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_alignParentLeft="true"
-            android:gravity="center"
-            android:textAppearance="?android:textAppearanceLarge"/>
+    <SearchView
+        android:id="@+id/refSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/clientPhone"
-            android:hint="Phone"
-            android:layout_weight="0.22"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_alignParentLeft="true"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/surveyPostcode"
-            android:hint="Postcode"
-            android:layout_weight="0.18"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_alignParentLeft="true"
-            android:gravity="center"
-            android:textAppearance="?android:textAppearanceLarge"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/dateOrdered"
-            android:hint="Date Oedered"
-            android:layout_weight="0.16"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_alignParentLeft="true"
-            android:gravity="center"
-            android:textAppearance="?android:textAppearanceLarge"/>
-
-        <TextView
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/dateDue"
-            android:hint="Date Due"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_alignParentLeft="true"
-            android:gravity="center"
-            android:textAppearance="?android:textAppearanceLarge"
-            />
-
-
-
-    </LinearLayout>
+        android:queryHint="JobID Search..."
+        app:defaultQueryHint="JobID Search..."
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="75dp"
-        android:id="@+id/listview">
+
+
+        android:id="@+id/listview"
+        android:layout_below="@+id/refSearch"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
     </ListView>
+
+
+</RelativeLayout>
 
 </FrameLayout>
