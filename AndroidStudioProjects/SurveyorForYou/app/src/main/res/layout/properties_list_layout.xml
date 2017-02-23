@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
-    android:background="#e3e3e3">
+    android:background="#e3e3e3"
+    android:descendantFocusability="blocksDescendants">
 
     <TextView
         android:id="@+id/refNo"
@@ -144,7 +145,7 @@
     <Button
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:id="@+id/button5"
+        android:id="@+id/editDialog"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/editInfoSection"
         android:layout_alignStart="@+id/editInfoSection"
@@ -164,9 +165,12 @@
 
         <Button
             android:layout_height="wrap_content"
-            android:id="@+id/View"
-            android:background="@android:drawable/ic_menu_search"
-            android:layout_width="50dp" />
+            android:id="@+id/viewDialog"
+            android:background="@android:drawable/btn_default"
+            android:layout_width="50dp"
+            android:text="View"
+            android:focusable="false"
+            android:focusableInTouchMode="false"/>
 
     </LinearLayout>
 

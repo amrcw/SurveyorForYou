@@ -12,8 +12,13 @@ public class Properties {
     private String postcode;
     private String dateOrdered;
     private String dueDate;
+    private String jobStatus;
 
-    public Properties(String refNo, String name, String phone, String postcode,String dateOrdered, String dueDate){
+
+
+    public Properties(){}
+
+    public Properties(String refNo, String name, String phone, String postcode,String dateOrdered, String dueDate, String jobStatus){
 
         this.setRefNo(refNo);
         this.setName(name);
@@ -21,6 +26,17 @@ public class Properties {
         this.setPostcode(postcode);
         this.setDateOrdered(dateOrdered);
         this.setDueDate(dueDate);
+        this.setJobStatus(jobStatus);
+    }
+
+
+
+    public String getJobStatus() {
+        return jobStatus;
+    }
+
+    public void setJobStatus(String jobStatus) {
+        this.jobStatus = jobStatus;
     }
 
     public String getRefNo() {

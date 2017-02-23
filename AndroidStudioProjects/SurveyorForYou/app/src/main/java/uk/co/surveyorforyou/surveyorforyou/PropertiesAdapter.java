@@ -3,6 +3,7 @@ package uk.co.surveyorforyou.surveyorforyou;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +22,8 @@ import java.util.List;
 public class PropertiesAdapter extends ArrayAdapter implements Filterable{
 
     List<Properties> list = new ArrayList();
-    CustomFilter customFilter;
-
+   CustomFilter customFilter;
+    ArrayList<Properties> properties;
 
 
 
@@ -55,6 +56,7 @@ public class PropertiesAdapter extends ArrayAdapter implements Filterable{
     public View getView(int position, View convertView, ViewGroup parent) {
         View row;
         PropertiesHolder propertiesHolder;
+
 
         row = convertView;
         if(row == null){
@@ -92,7 +94,10 @@ public class PropertiesAdapter extends ArrayAdapter implements Filterable{
     @NonNull
     @Override
     public Filter getFilter() {
-        return super.getFilter();
+        if (customFilter == null)
+            customFilter = new CustomFilter();
+
+        return customFilter;
     }
 
     class CustomFilter extends Filter{
@@ -105,25 +110,44 @@ public class PropertiesAdapter extends ArrayAdapter implements Filterable{
             if(constraint != null && constraint.length() > 0){
 
                 constraint = constraint.toString().toUpperCase();
-                ArrayList<Properties> filer = new ArrayList<>();
+                List<Properties> filer = new ArrayList<>();
 
-                for (int i=0; i< list.size(); i++){
-                    if(list.get(i).getRefNo().toUpperCase().contains(constraint)){
-                        Properties p = new Properties(list.get(i).getRefNo(),list.get(i).getName(),list.get(i).getPhone(),list.get(i).getPostcode(),list.get(i).getDateOrdered(),list.get(i).getDueDate());
+
+                for (Properties p : list) {
+
+                    if(constraint == "In Progress"){
+                        p.getJobStatus().startsWith(constraint.toString());
                         filer.add(p);
+                    }else {
+                        if (p.getName().toUpperCase().startsWith(constraint.toString().toUpperCase()))
+                            filer.add(p);
                     }
                 }
 
                 filterResults.count = filer.size();
-                filterResults.values = list;
+                filterResults.values = filer;
 
             }
-            return null;
+            Log.i("Result", String.valueOf(filterResults));
+            return filterResults;
         }
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
+            if (results.count == 0) {
+                Log.i("ResultInvalid", String.valueOf(results));
+                notifyDataSetInvalidated();
+
+            }else {
+                Log.i("ResultAfter", String.valueOf(results));
+                list = (List<Properties>) results.values;
+                notifyDataSetChanged();
+            }
+
         }
     }
+
+
+
 }

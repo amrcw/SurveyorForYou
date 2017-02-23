@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -44,9 +46,10 @@ public class UserDashboard extends AppCompatActivity{
     private Spinner mSpinner;
     private Fragment fragment = null;
     private Class fragmentClass = null;
+    PropertiesAdapter propertiesAdapter;
     String JSON_STRING;
     String json_string;
-
+    Button viewDialog;
 
 
 
@@ -62,14 +65,34 @@ public class UserDashboard extends AppCompatActivity{
 
 
 
+
         mSpinner = (Spinner)findViewById(R.id.spinner);
         ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(UserDashboard.this,R.layout.custom_spinner_item,getResources().getStringArray(R.array.properties));
         mAdapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
         mSpinner.setAdapter(mAdapter);
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(UserDashboard.this,mSpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                //Toast.makeText(UserDashboard.this,mSpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+
+                switch ((String) mSpinner.getItemAtPosition(position)) {
+
+                    case "In Progress":
+                        //Toast.makeText(UserDashboard.this,mSpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+                        propertiesAdapter.getFilter().filter(mSpinner.getSelectedItem().toString());
+                        break;
+                    case "Complete":
+                        Toast.makeText(UserDashboard.this,mSpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+                        break;
+                    case "All":
+                        Toast.makeText(UserDashboard.this,mSpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        break;
+
+                }
+
+                Log.i("item", (String) mSpinner.getItemAtPosition(position));
 
             }
 

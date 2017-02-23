@@ -27,6 +27,8 @@ public class PropertiesTask extends AsyncTask<Void,Void,Void> {
     Context context;
     ProgressDialog progressDialog;
 
+    public PropertiesTask(){}
+
     public PropertiesTask(Context context){
         this.context = context;
     }
